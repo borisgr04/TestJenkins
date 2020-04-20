@@ -1,7 +1,7 @@
 node {
 
   stage('Checkout') {
-    git url: '',branch: 'master'
+    git credentialsId: 'e4e777df-8f21-4c9b-b123-6257614043ee', url: 'https://github.com/borisgr04/TestJenkins.git', branch: 'master'
   }
   
   stage ('Restore Nuget') {
