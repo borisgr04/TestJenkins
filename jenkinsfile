@@ -35,4 +35,13 @@ node {
       emailext body: 'Se terminó de desplegar', subject: 'Test - Se termino de desplegar', to: 'bgonzalez@byasystems.com.co'
   }
   
+  stage('Build + SonarQube analysis') {
+      def sqScannerMsBuildHome = tool 'Scanner for MSBuild 4.6'
+      withSonarQubeEnv('My SonarQube Server') {
+	      bat 'dotnet sonarscanner begin /k:"project-key" '
+      	      bat 'dotnet build <path to solution.sln>'
+              bat 'dotnet sonarscanner end '
+    }
+  }
+  
 }
