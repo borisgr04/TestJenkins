@@ -13,12 +13,11 @@ node {
   }
   
   stage('Build + SonarQube analysis') {
-      def sqScannerMsBuildHome = tool 'Sonar NetCore'
-      withSonarQubeEnv('My SonarQube Server') {
+      
 	      bat 'dotnet sonarscanner begin /k:"project-key" '
       	      bat 'dotnet build '
               bat 'dotnet sonarscanner end '
-    }
+
   }
   
   stage('Build') {
