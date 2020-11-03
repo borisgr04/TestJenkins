@@ -12,14 +12,6 @@ node {
     bat 'dotnet clean '
   }
   
-  stage('Build + SonarQube analysis') {
-      
-	      bat 'dotnet sonarscanner begin /k:"project-key" '
-      	      bat 'dotnet build '
-              bat 'dotnet sonarscanner end '
-
-  }
-  
   stage('Build') {
     bat 'dotnet build  --configuration Release'
   }
